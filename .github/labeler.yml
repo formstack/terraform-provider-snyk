@@ -1,0 +1,3 @@
+'Compliance: Security Group':
+- '**/sg_*.tf'
+- '**/security_group.tf'
