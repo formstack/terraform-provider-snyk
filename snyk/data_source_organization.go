@@ -18,8 +18,19 @@ func dataSourceOrganization() *schema.Resource {
 				Required: true,
 			},
 			"name": {
-				Type:     schema.TypeString,
-				Computed: true,
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "Organization name",
+			},
+			"url": {
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "Organization web console login",
+			},
+			"slug": {
+				Type:        schema.TypeString,
+				Computed:    true,
+				Description: "Organization short name",
 			},
 		},
 	}
@@ -40,6 +51,8 @@ func dataSourceOrganizationRead(ctx context.Context, d *schema.ResourceData, m i
 
 	d.Set("id", org.Id)
 	d.Set("name", org.Name)
+	d.Set("url", org.Url)
+	d.Set("slug", org.Slug)
 
 	d.SetId(org.Id)
 

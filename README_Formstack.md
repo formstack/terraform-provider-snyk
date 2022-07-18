@@ -24,5 +24,14 @@ terraform {
     }
 }
 ```
-- I'm currently using Go 1.1.7 and everything seems to be working fine
+
+# Building with your local changes
+The terraform provider files import the API from github directly at `github.com/formstack/terraform-provider-snyk/snyk/api` so if you are adding something to the API your local API changes would need to be merged in before your local terraform files could see and use them.
+
+In `go.mod` add a line at the bottom similar to the following to direct go to build using your local files
+```
+replace github.com/formstack/terraform-provider-snyk => /Users/jay/formstack/terraform-provider-snyk
+```
+
+- I'm currently using Go 1.17 and everything seems to be working fine
 

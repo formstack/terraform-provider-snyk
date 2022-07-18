@@ -3,15 +3,12 @@
 page_title: "snyk_integration Resource - terraform-provider-snyk"
 subcategory: ""
 description: |-
-Resource to manage an individual integration between Snyk and an external service. 
+  
 ---
 
 # snyk_integration (Resource)
 
-Resource to manage an individual integration between Snyk and an external service. Supports all integrations
-currently exposed through the API.
 
-Will overwrite any currently configured credentials saved in the Snyk org.
 
 ## Example Usage
 
@@ -31,27 +28,25 @@ resource "snyk_integration" "example_integration" {
 
 ### Required
 
-- **credentials** (Block List, Min: 1, Max: 1) (see [below for nested schema](#nestedblock--credentials))
-- **organization** (String) The organization ID you wish to configure the integration for.
-- **type** (String)
+- `credentials` (Block List, Min: 1, Max: 1) (see [below for nested schema](#nestedblock--credentials))
+- `organization` (String)
+- `type` (String)
 
-### Optional
+### Read-Only
 
-- **id** (String) The ID of this resource.
+- `id` (String) The ID of this resource.
 
 <a id="nestedblock--credentials"></a>
 ### Nested Schema for `credentials`
 
-Make sure to only enter the fields required for your particular integration. Please refer to the Snyk API docs for the required fields.
-
 Optional:
 
-- **password** (String, Sensitive)
-- **region** (String)
-- **registry_base** (String)
-- **role_arn** (String)
-- **token** (String, Sensitive)
-- **url** (String)
-- **username** (String)
+- `password` (String, Sensitive)
+- `region` (String)
+- `registry_base` (String)
+- `role_arn` (String)
+- `token` (String, Sensitive)
+- `url` (String)
+- `username` (String)
 
 
