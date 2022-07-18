@@ -15,7 +15,7 @@ direct {
 }
 ```
 
-- in your terraform project reference the provider like this
+- in your terraform project reference the provider like this (you can also refernce a specific version as you normally would if you have several installed locally)
 ```
 terraform {
   required_providers {
