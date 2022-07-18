@@ -1,6 +1,6 @@
 # Snyk Terraform Provider
 
-[![Acceptance Tests](https://github.com/lendi-au/terraform-provider-snyk/actions/workflows/acceptance_test.yml/badge.svg)](https://github.com/lendi-au/terraform-provider-snyk/actions/workflows/acceptance_test.yml)
+[![Acceptance Tests](https://github.com/formstack/terraform-provider-snyk/actions/workflows/acceptance_test.yml/badge.svg)](https://github.com/formstack/terraform-provider-snyk/actions/workflows/acceptance_test.yml)
 
 Provider for managing various aspects of Organizations within Snyk.
 
@@ -49,7 +49,7 @@ Then commit the changes to `go.mod` and `go.sum`.
 terraform {
   required_providers {
     snyk = {
-      source = "lendi-au/snyk"
+      source = "formstack/snyk"
       version = "<version>"
     }
   }

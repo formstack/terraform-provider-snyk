@@ -5,8 +5,8 @@ import (
 	"flag"
 	"log"
 
+	"github.com/formstack/terraform-provider-snyk/snyk"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/plugin"
-	"github.com/lendi-au/terraform-provider-snyk/snyk"
 )
 
 // Run "go generate" to format example terraform files and generate the docs for the registry/website
@@ -37,7 +37,7 @@ func main() {
 	opts := &plugin.ServeOpts{ProviderFunc: snyk.Provider(version)}
 
 	if debugMode {
-		err := plugin.Debug(context.Background(), "registry.terraform.io/lendi-au/snyk", opts)
+		err := plugin.Debug(context.Background(), "registry.terraform.io/formstack/snyk", opts)
 		if err != nil {
 			log.Fatal(err.Error())
 		}
