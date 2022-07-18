@@ -3,7 +3,7 @@ package snyk
 import (
 	"context"
 
-	"github.com/lendi-au/terraform-provider-snyk/snyk/api"
+	"github.com/formstack/terraform-provider-snyk/snyk/api"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"

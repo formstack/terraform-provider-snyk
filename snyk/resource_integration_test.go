@@ -4,10 +4,10 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/formstack/terraform-provider-snyk/snyk/api"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/acctest"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/resource"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/terraform"
-	"github.com/lendi-au/terraform-provider-snyk/snyk/api"
 )
 
 func TestAccIntegration(t *testing.T) {
