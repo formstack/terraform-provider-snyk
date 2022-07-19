@@ -24,5 +24,5 @@ provider "snyk" {
 
 ### Required
 
-- **api_key** (String, Sensitive)
-- **group_id** (String)
+- `api_key` (String, Sensitive)
+- `group_id` (String)
