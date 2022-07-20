@@ -15,3 +15,5 @@ require (
 	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20220719170305-83ca9fad585f // indirect
 )
+
+replace github.com/formstack/terraform-provider-snyk => /Users/jay/formstack/4855/terraform-provider-snyk
