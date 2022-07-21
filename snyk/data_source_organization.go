@@ -37,7 +37,6 @@ func dataSourceOrganization() *schema.Resource {
 }
 
 func dataSourceOrganizationRead(ctx context.Context, d *schema.ResourceData, m interface{}) diag.Diagnostics {
-
 	var diags diag.Diagnostics
 
 	so := m.(api.SnykOptions)
