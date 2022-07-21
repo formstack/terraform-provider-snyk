@@ -13,8 +13,9 @@ func dataSourceProject() *schema.Resource {
 		ReadContext: dataSourceProjectRead,
 		Schema: map[string]*schema.Schema{
 			"id": {
-				Type:     schema.TypeString,
-				Required: true,
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Project ID",
 			},
 			"name": {
 				Type:        schema.TypeString,
@@ -34,7 +35,7 @@ func dataSourceProject() *schema.Resource {
 			"orgid": {
 				Type:        schema.TypeString,
 				Description: "Branch to monitor",
-				Optional:    true,
+				Required:    true,
 			},
 		},
 	}

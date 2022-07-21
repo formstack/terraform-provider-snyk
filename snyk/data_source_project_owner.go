@@ -13,8 +13,9 @@ func dataSourceProjectOwner() *schema.Resource {
 		ReadContext: dataSourceProjectOwnerRead,
 		Schema: map[string]*schema.Schema{
 			"id": {
-				Type:     schema.TypeString,
-				Required: true,
+				Type:        schema.TypeString,
+				Required:    true,
+				Description: "Project ID",
 			},
 			"name": {
 				Type:        schema.TypeString,
@@ -24,7 +25,7 @@ func dataSourceProjectOwner() *schema.Resource {
 			"orgid": {
 				Type:        schema.TypeString,
 				Description: "Branch to monitor",
-				Optional:    true,
+				Required:    true,
 			},
 		},
 	}
