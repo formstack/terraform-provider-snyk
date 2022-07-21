@@ -24,7 +24,7 @@ func dataSourceProjectOwner() *schema.Resource {
 			},
 			"orgid": {
 				Type:        schema.TypeString,
-				Description: "Branch to monitor",
+				Description: "ID of the Organization",
 				Required:    true,
 			},
 		},

@@ -39,6 +39,7 @@ func Provider(version string) func() *schema.Provider {
 				"snyk_organization":  dataSourceOrganization(),
 				"snyk_project":       dataSourceProject(),
 				"snyk_project_owner": dataSourceProjectOwner(),
+				"snyk_integration":   dataSourceIntegration(),
 			},
 		}
 
