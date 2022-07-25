@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"os"
 )
 
 type OwnerDetails struct {
@@ -21,7 +20,6 @@ type Projects struct {
 }
 
 func GetProjectById(so SnykOptions, orgId string, intType string) (*Projects, error) {
-
 	path := fmt.Sprintf("/org/%s/project/%s", orgId, intType)
 
 	log.Println(path)
@@ -35,7 +33,7 @@ func GetProjectById(so SnykOptions, orgId string, intType string) (*Projects, er
 	defer res.Body.Close()
 	var proj Projects
 	json.NewDecoder(res.Body).Decode(&proj)
-
+	log.Println("proj_name=", proj.Name)
 	project := &Projects{
 		Id:     proj.Id,
 		Name:   proj.Name,
@@ -48,15 +46,7 @@ func GetProjectById(so SnykOptions, orgId string, intType string) (*Projects, er
 }
 
 func GetProjectOwner(so SnykOptions, orgId string, intType string) (*OwnerDetails, error) {
-	file, err := os.OpenFile("/Users/jay/formstack/gotest/logs_owner.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.SetOutput(file)
-
 	path := fmt.Sprintf("/org/%s/project/%s", orgId, intType)
-
-	log.Println(path)
 
 	res, err := clientDo(so, "GET", path, nil)
 
@@ -77,5 +67,49 @@ func GetProjectOwner(so SnykOptions, orgId string, intType string) (*OwnerDetail
 	}
 
 	return project, nil
+
+}
+
+func GetAllProjects(so SnykOptions, orgId string) ([]Projects, error) {
+	path := fmt.Sprintf("/org/%s/projects", orgId)
+	res, err := clientDo(so, "GET", path, nil)
+
+	defer res.Body.Close()
+
+	projects := map[string]json.RawMessage{}
+	err = json.NewDecoder(res.Body).Decode(&projects)
+
+	if err != nil {
+		return nil, err
+	}
+
+	var proj []Projects
+	json.Unmarshal(projects["projects"], &proj)
+	return proj, nil
+
+}
+
+func GetProjectByName(so SnykOptions, orgId string, name string) (*Projects, error) {
+	projects, err := GetAllProjects(so, orgId)
+	if err != nil {
+		return nil, err
+	}
+
+	for _, project := range projects {
+		if project.Name == name {
+			return &project, nil
+		}
+	}
+
+	return nil, fmt.Errorf("project with name %s not found", name)
+
+}
+
+func DeleteProject(so SnykOptions, orgId string, intType string) error {
+	path := fmt.Sprintf("/org/%s/project/%s", orgId, intType)
+
+	_, err := clientDo(so, "DELETE", path, nil)
+
+	return err
 
 }
