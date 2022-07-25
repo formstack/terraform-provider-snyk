@@ -25,7 +25,7 @@ data "snyk_project_owner" "example" {
 ### Required
 
 - `id` (String) Project ID
-- `orgid` (String) Branch to monitor
+- `orgid` (String) ID of the Organization
 
 ### Read-Only
 
