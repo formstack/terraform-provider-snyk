@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"strconv"
 )
 
 type SnykOptions struct {
@@ -39,7 +40,7 @@ func clientDo(so SnykOptions, method string, path string, body []byte) (*http.Re
 	} else if res.StatusCode == 404 {
 		return nil, fmt.Errorf("%w", ErrNotFound)
 	} else {
-		return nil, fmt.Errorf("%w", ErrUnexpectedStatus)
+		return nil, errors.New(strconv.Itoa(res.StatusCode))
 	}
 }
 

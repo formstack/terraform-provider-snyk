@@ -2,7 +2,6 @@ package snyk
 
 import (
 	"context"
-	"log"
 
 	"github.com/formstack/terraform-provider-snyk/snyk/api"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
@@ -70,12 +69,12 @@ func resourceProjectCreate(ctx context.Context, d *schema.ResourceData, m interf
 
 	var project *api.Target
 
-	project, err = api.ImportTarget(so, organization, integration, repository_owner, repository_name, branch)
+	project, err = api.ImportProject(so, organization, integration, repository_owner, repository_name, branch)
 
 	if err != nil {
 		return diag.FromErr(err)
 	}
-	log.Println("final_p_name ", project.Name)
+
 	d.SetId(project.Id)
 	d.Set("organization", organization)
 	d.Set("project_name", project.Name)
@@ -110,21 +109,23 @@ func resourceProjectUpdate(ctx context.Context, d *schema.ResourceData, m interf
 	var diags diag.Diagnostics
 	so := m.(api.SnykOptions)
 
-	orgId := d.Get("organization").(string)
-	intType := d.Get("type").(string)
-	credentials, err := getCredentialState(d)
+	id := d.Id()
+	organization := d.Get("organization").(string)
+	repository_owner := d.Get("repository_owner").(string)
+	branch := d.Get("branch").(string)
+	repository_name := d.Get("repository_name").(string)
+	integration := d.Get("integration").(string)
+
+	project, err := api.UpdateProject(so, id, organization, integration, repository_owner, repository_name, branch)
 
 	if err != nil {
 		return diag.FromErr(err)
 	}
 
-	integration, err := api.UpdateIntegration(so, orgId, intType, credentials)
-
-	if err != nil {
-		return diag.FromErr(err)
-	}
-
-	setCredentialState(integration.Credentials, d)
+	d.SetId(project.Id)
+	d.Set("organization", organization)
+	d.Set("project_name", project.Name)
+	d.Set("branch", project.Branch)
 
 	return diags
 }
