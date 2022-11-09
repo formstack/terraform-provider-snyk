@@ -2,7 +2,8 @@
 
 [![Acceptance Tests](https://github.com/formstack/terraform-provider-snyk/actions/workflows/acceptance_test.yml/badge.svg)](https://github.com/formstack/terraform-provider-snyk/actions/workflows/acceptance_test.yml)
 
-Provider for managing various aspects of Organizations within Snyk.
+Provider for managing various aspects of Organizations within Snyk.  This repository was originally forked from https://github.com/lendi-au/terraform-provider-snyk
+
 
 **Note: Requires a Business/Enterprise account, as that provides access to the API.**
 
