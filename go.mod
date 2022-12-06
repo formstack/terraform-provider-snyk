@@ -14,7 +14,6 @@ require (
 	github.com/oklog/run v1.1.0 // indirect
 	github.com/vmihailenco/tagparser v0.1.2 // indirect
 	golang.org/x/net v0.3.0 // indirect
-	google.golang.org/appengine v1.6.7 // indirect
 	google.golang.org/genproto v0.0.0-20221205194025-8222ab48f5fc // indirect
 
 )
