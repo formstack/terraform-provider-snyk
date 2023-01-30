@@ -18,5 +18,3 @@ require (
 	google.golang.org/grpc v1.52.3 // indirect
 
 )
-
-replace github.com/formstack/terraform-provider-snyk => /Users/jay/formstack/terraform-provider-snyk
