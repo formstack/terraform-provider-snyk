@@ -8,8 +8,6 @@ description: |-
 
 # snyk_project (Resource)
 
-
-
 ## Example Usage
 
 ```terraform
@@ -41,5 +39,9 @@ resource "snyk_project" "example" {
 
 - `id` (String) The ID of this resource.
 - `project_name` (String)
+
+## Known Issues
+- Only tested with the Github integration at the moment.
+- Provider will crash if the repository being imported doesn't have files supported by Snyk for scanning.
 
 
