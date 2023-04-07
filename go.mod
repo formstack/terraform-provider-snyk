@@ -17,5 +17,7 @@ require (
 	github.com/vmihailenco/tagparser v0.1.2 // indirect
 	golang.org/x/net v0.9.0 // indirect
 	google.golang.org/genproto v0.0.0-20230403163135-c38d8f061ccd // indirect
+	github.com/pkg/sftp  v1.13.1 //indirect
+	github.com/mattn/go-sqlite3 v1.14.15  //indirect
 
 )
