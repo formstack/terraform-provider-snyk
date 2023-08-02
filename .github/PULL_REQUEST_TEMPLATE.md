@@ -7,4 +7,4 @@ Be sure to list the JIRA issues in the PR title so they are linked.
 * That only the expected changes will occur.  No unintentional resources will be changed.
 
 # Deployment Instructions
-TFE
+TFC
