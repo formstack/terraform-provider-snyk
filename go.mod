@@ -20,9 +20,9 @@ require (
 )
 
 require (
-	golang.org/x/image v0.12.0 // indirect
-	github.com/elazarl/goproxy v0.0.0-20230731152917-f99041a5c027 // indirect
+	github.com/elazarl/goproxy v0.0.0-20230808193330-2592e75ae04a // indirect
 	github.com/elazarl/goproxy/ext v0.0.0-20230731152917-f99041a5c027 // indirect
+	golang.org/x/image v0.12.0 // indirect
 
 )
 
