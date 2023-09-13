@@ -14,7 +14,9 @@ require (
 	github.com/vmihailenco/tagparser v0.1.2 // indirect
 	golang.org/x/net v0.15.0 // indirect
 	google.golang.org/appengine v1.6.8 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20230911183012-2d3300fd4832 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20230913181813-007df8e322eb // indirect
 	google.golang.org/grpc v1.58.0 // indirect
 
 )
+
+require golang.org/x/image v0.12.0 // indirect
