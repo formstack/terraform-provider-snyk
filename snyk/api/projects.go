@@ -20,6 +20,16 @@ type Projects struct {
 	Owner  OwnerDetails
 }
 
+type ProjectsRest struct {
+	Id         string `json:"id"`
+	Attributes AttributesRest
+}
+
+type AttributesRest struct {
+	Name   string `json:"name"`
+	Origin string `json:"origin"`
+}
+
 func GetProjectById(so SnykOptions, orgId string, intType string) (*Projects, error) {
 	path := fmt.Sprintf("/org/%s/project/%s", orgId, intType)
 
@@ -66,10 +76,10 @@ func GetProjectOwner(so SnykOptions, orgId string, intType string) (*OwnerDetail
 
 }
 
-func GetAllProjects(so SnykOptions, orgId string) ([]Projects, error) {
-	path := fmt.Sprintf("/org/%s/projects", orgId)
+func GetAllProjects(so SnykOptions, orgId string) ([]ProjectsRest, error) {
+	path := fmt.Sprintf("/orgs/%s/projects", orgId)
 
-	res, err := clientDo(so, "GET", path, nil)
+	res, err := clientDoRest(so, "GET", path, nil)
 
 	if err != nil {
 		log.Fatal(err)
@@ -84,13 +94,13 @@ func GetAllProjects(so SnykOptions, orgId string) ([]Projects, error) {
 		return nil, err
 	}
 
-	var proj []Projects
-	json.Unmarshal(projects["projects"], &proj)
+	var proj []ProjectsRest
+	json.Unmarshal(projects["data"], &proj)
 	return proj, nil
 
 }
 
-func GetProjectByName(so SnykOptions, orgId string, name string) (*Projects, error) {
+func GetProjectByName(so SnykOptions, orgId string, name string) (*ProjectsRest, error) {
 	projects, err := GetAllProjects(so, orgId)
 
 	if err != nil {
@@ -102,7 +112,7 @@ func GetProjectByName(so SnykOptions, orgId string, name string) (*Projects, err
 	}
 
 	for _, project := range projects {
-		if strings.Contains(project.Name, name) {
+		if strings.Contains(project.Attributes.Name, name) {
 			return &project, nil
 		}
 	}

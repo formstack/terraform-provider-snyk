@@ -58,14 +58,16 @@ func ImportProject(so SnykOptions, orgId string, integration string, repository_
 	}
 
 	//once we get a successful import, look up the project ID so we can return it in our struct
-	if imports == true {
+	if imports {
 		projects, err := GetProjectByName(so, orgId, full_name)
 		if err != nil {
+			return nil, err
 		}
 		returnData := &Target{
 			Id:     projects.Id,
-			Name:   projects.Name,
-			Branch: projects.Branch,
+			Name:   projects.Attributes.Name,
+			Owner:  repository_owner,
+			Branch: branch,
 		}
 		return returnData, nil
 
