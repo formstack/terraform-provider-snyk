@@ -5,7 +5,7 @@ go 1.15
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/fatih/color v1.15.0 // indirect
-	github.com/hashicorp/terraform-plugin-docs v0.13.0
+	github.com/hashicorp/terraform-plugin-docs v0.16.0
 	github.com/hashicorp/terraform-plugin-sdk/v2 v2.29.0
 	github.com/hashicorp/yamux v0.1.1 // indirect
 	github.com/mattn/go-isatty v0.0.19 // indirect
