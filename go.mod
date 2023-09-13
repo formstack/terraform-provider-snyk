@@ -19,6 +19,11 @@ require (
 
 )
 
-require golang.org/x/image v0.12.0 // indirect
+require (
+	golang.org/x/image v0.12.0 // indirect
+	github.com/elazarl/goproxy v0.0.0-20230731152917-f99041a5c027 // indirect
+	github.com/elazarl/goproxy/ext v0.0.0-20230731152917-f99041a5c027 // indirect
+
+)
 
 replace github.com/formstack/terraform-provider-snyk => /Users/jaylark/formstack/6227/terraform-provider-snyk
